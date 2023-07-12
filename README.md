@@ -1,0 +1,2 @@
+# liff-flex
+flexメッセージ用
