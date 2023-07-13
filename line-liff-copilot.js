@@ -120,7 +120,7 @@ class LiffCopilot {
         await liff.sendMessages([{
             type: type,
             text: message
-        }]) // 開いている場所に送信
+        }]).then(()=>{}).catch((err)=>{this.error(err)}) // 開いている場所に送信
     } // async
 
     async PowerSend(array) {
