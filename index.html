@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIFFLEX-by ame-x / @macl2189</title>
+    <title>LINE-Tool | ame-x / @macl2189</title>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-    <input type="text" placeholder="msg" id="msg">
-    <button onclick="send()">Send</button>
-    by @macl2189 / ame_xにご連絡ください
-    <script>
-        liff.init({
-            liffId: '2000115983-Lk4Ywd65', 
-            withLoginOnExternalBrowser: true, 
-        }).then(() => {
-            
-        });
+    <script src="./line-liff-copilot.js"></script>
+    <h1>
+        LINE-TOOL-Pilot ✈
+    </h1>
+    <p>通常Message送信</p>
+    <input type="text" placeholder="Message" id="msg">
+    <button onclick="CoLiff.Send('text', document.getElementById('msg').value)">Send</button>
+    <p>JSONMessage送信</p>
+    <input type="text" placeholder="[{type: [string], text... contents...},...]" id="json-msg">
+    <button  onclick="CoLiff.PowerSend('text', document.getElementById('msg').value)">Send</button>
 
-        function send() {
-            const val = JSON.parse(document.getElementById("msg").value);
-            liff.sendMessages(val)
+    <p>&copy; 2023 @macl2189 | ame_xにご連絡ください。</p>
+    <p>このサイトは<a href="https://github.com/EdamAme-x/line-liff-copliot">line-liff-copilot</a>という自作のliffライブラリを使用しています。</p>
+    <script>
+
+        let CoLiff = new LiffCopilot("2000115983-Lk4Ywd65", false, start());
+
+        function start() {
+            console.log("start!")
         }
     </script>
 </body>
