@@ -25,7 +25,7 @@ class LiffCopilot {
         }).then(() => {
             this.init(_callback);
         }).catch((err) => {
-            this.error("COPILOT_Err | " + err);
+            this.error("COPILOT_Error | " + err);
         })
     }
 
