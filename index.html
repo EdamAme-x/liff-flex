@@ -14,7 +14,7 @@
     </h1>
     <p>通常Message送信</p>
     <input type="text" placeholder="Message" id="msg">
-    <button onclick="CoLiff.Send('text', document.getElementById('msg').value)">Send</button>
+    <button onclick="CoLiff.Send(document.getElementById('msg').value)">Send</button>
     <p>JSONMessage送信</p>
     <input type="text" placeholder="[{type: [string], text... contents...},...]" id="json-msg">
     <button  onclick="CoLiff.PowerSend('text', document.getElementById('msg').value)">Send</button>
