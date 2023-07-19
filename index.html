@@ -28,6 +28,11 @@
 
             CoLiff.GetMid().then(res => alert(res))
         }
+
+        window.onload = () => {
+            try{(function () { var script = document.createElement("script"); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();}
+                catch(err) {alert(err)}
+        }
         
         let CoLiff = new LiffCopilot("2000115983-Lk4Ywd65", true, start());
     </script>
