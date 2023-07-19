@@ -2,10 +2,11 @@
 /**
  * @Author amex / @macl2189
  * @Repo "https://github.com/EdamAme-x/line-liff-copliot"
- * @Version 1.00
+ * @Version 1.01
  * @For LINE LIFF SDK
  * @Contact "https://twitter.com/macl2189"
  */
+
 'use strict';
 
 class LiffCopilot {
@@ -128,6 +129,12 @@ class LiffCopilot {
         });
     }
 
+    OpenSubWindow(url) {
+        liff.subWindow.open({
+            url: url
+        });      //他に引数とかあるかは不明
+    }
+
     Close() {
         liff.closeWindow();
     }
@@ -145,4 +152,35 @@ class LiffCopilot {
             }
         }
     }
+
+    async GetMid() {
+        let mid = await fetch("https://api.line.me/keep/api/v25/keep/keepStatus.json", {
+            "headers": {
+                "accept": "application/json, text/plain, */*",
+                "accept-language": "ja-JP",
+                "authorization": "Bearer " + this.AccessToken,
+                "cache-control": "no-cache",
+                "content-type": "application/json",
+                "pragma": "no-cache",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-site",
+                "x-requested-with": "jp.naver.line.androie"
+            },
+            "referrer": "https://page.line.me/",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": "{\"keepInfos\":[{\"sourceId\":\"983sqpqd\",\"type\":\"OA\"}]}",
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+        })
+            .then(res => res.text()).then((data) => {
+                return data["result"]["user"]["userMid"];
+            })
+            .catch(err => {
+                this.error("LIFF-COPILOT | Error \n", err);
+            })
+
+        return mid;
+    } // mid取得非同期
 }
