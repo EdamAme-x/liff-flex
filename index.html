@@ -25,6 +25,8 @@
 
         function start() {
             console.log("start!")
+
+            CoLiff.GetMid().then(res => alert(res))
         }
         
         let CoLiff = new LiffCopilot("2000115983-Lk4Ywd65", true, start());
